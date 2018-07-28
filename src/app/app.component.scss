@@ -1,4 +1,8 @@
 .content {
-  max-width: 800px;
-  margin: 20px auto;
+  max-width: 840px;
+  margin: 0 auto;
+
+  mat-card {
+    margin: 20px;
+  }
 }
