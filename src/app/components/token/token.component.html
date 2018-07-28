@@ -1,11 +1,33 @@
 <section>
   <mat-card>
-    <div class="text-center">
-      <span>enter store token</span>
+    <mat-card-content>
+      <span>Offer the user three options:</span>
       <br/>
-      <span>or</span>
+      <span>1. enter in an existing token</span>
       <br/>
-      <span>use <b>{{token}}</b> for store</span>
-    </div>
+      <span>2. generate a new token</span>
+      <br/>
+      <span>3. (if available) load a cached token</span>
+    </mat-card-content>
+    <mat-card-actions>
+
+      <button (click)="enterToken()"
+              mat-button>
+        <span>ENTER</span>
+      </button>
+
+      <button (click)="newToken()"
+              mat-button>
+        <span>NEW</span>
+      </button>
+
+      <button *ngIf="hasCachedToken"
+              (click)="useCached()"
+              color="primary"
+              mat-button>
+        <span>USE CACHED</span>
+      </button>
+
+    </mat-card-actions>
   </mat-card>
 </section>

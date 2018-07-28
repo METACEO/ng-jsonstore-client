@@ -12,6 +12,7 @@ import { IEndpoint } from './interfaces/endpoint.interface';
 })
 export class AppComponent {
 
+  public cachedToken: string;
   public endpoints: IEndpoint[];
   public token: string;
 
