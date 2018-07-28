@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { EndpointsComponent } from './components/endpoints/endpoints.component';
 import { TokenComponent } from './components/token/token.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { MaterialModule } from './material.module';
@@ -11,6 +12,7 @@ import { MaterialModule } from './material.module';
 @NgModule({
   declarations: [
     AppComponent,
+    EndpointsComponent,
     TokenComponent,
     ToolbarComponent
   ],
