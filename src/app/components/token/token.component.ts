@@ -1,9 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { filter, map } from 'rxjs/operators';
 
-import { environment } from '../../../environments/environment';
+import { JsonstoreService } from '../../services/jsonstore.service';
 import { getTokenUrl } from '../../utils/getTokenUrl.util';
 
 @Component({
@@ -19,7 +17,7 @@ export class TokenComponent {
 
   tokenFormControl: FormControl = new FormControl('');
 
-  constructor(private _httpClient: HttpClient) {
+  constructor(private _jsonstoreService: JsonstoreService) {
   }
 
   public usePastedToken(): void {
@@ -29,11 +27,7 @@ export class TokenComponent {
   }
 
   public generateNewToken(): void {
-    this._httpClient.get<{token: string}>(`${environment.api}/get-token`)
-      .pipe(
-        filter(response => response.token !== undefined),
-        map(response => response.token)
-      )
+    this._jsonstoreService.getToken()
       .subscribe(token => this.tokenSelected.emit(getTokenUrl(token)));
   }
 

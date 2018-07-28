@@ -9,6 +9,7 @@ import { EndpointsComponent } from './components/endpoints/endpoints.component';
 import { TokenComponent } from './components/token/token.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { MaterialModule } from './material.module';
+import { JsonstoreService } from './services/jsonstore.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { MaterialModule } from './material.module';
     MaterialModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [JsonstoreService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
