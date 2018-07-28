@@ -1,9 +1,20 @@
 <section>
-  <mat-card>
-    <div style="text-align: center;">
+  <mat-card [style.backgroundColor]="loadingEndpoints ? 'rgba(0, 0, 0, 0.1)' : null">
+
+    <ng-container *ngIf="loadingEndpoints; else RenderEndpoints">
+      <div class="mat-caption text-center">
+        Waiting to load your endpoints...
+      </div>
+    </ng-container>
+    <ng-template #RenderEndpoints>
+      {{endpoints | json}}
+    </ng-template>
+
+    <div class="text-center">
       <span>render store's endpoints and support reading/editing/deleting endpoints</span>
       <br/>
       <span>support creating endpoints</span>
     </div>
+
   </mat-card>
 </section>

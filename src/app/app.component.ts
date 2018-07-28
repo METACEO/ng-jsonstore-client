@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { filter, map } from 'rxjs/operators';
 
 import { environment } from '../environments/environment';
+import { IEndpoint } from './interfaces/endpoint.interface';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,7 @@ import { environment } from '../environments/environment';
 })
 export class AppComponent {
 
+  public endpoints: IEndpoint[];
   public token: string;
 
   constructor(private _httpClient: HttpClient) {
