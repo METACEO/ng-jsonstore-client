@@ -21,6 +21,7 @@ export class AppComponent {
   tokenSelected(token: string): void {
     this.token = token;
     if (!this.token) {
+      this.endpoints = null;
       return;
     }
     this._jsonstoreService.getStore(token)
