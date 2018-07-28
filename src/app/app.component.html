@@ -4,7 +4,8 @@
 <div class="content mat-typography">
 
   <app-token [cachedToken]="cachedToken"
-             [token]="token"></app-token>
+             [token]="token"
+             (tokenSelected)="tokenSelected($event)"></app-token>
 
   <app-endpoints [endpoints]="endpoints"></app-endpoints>
 

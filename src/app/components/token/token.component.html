@@ -1,33 +1,51 @@
 <section>
   <mat-card>
     <mat-card-content>
-      <span>Offer the user three options:</span>
-      <br/>
-      <span>1. enter in an existing token</span>
-      <br/>
-      <span>2. generate a new token</span>
-      <br/>
-      <span>3. (if available) load a cached token</span>
+      <ng-container *ngIf="token; else ShowPrompt">
+
+        <mat-form-field class="full-width">
+          <input [value]="token"
+                 disabled
+                 matInput
+                 placeholder="Using JSONStore.io token">
+        </mat-form-field>
+
+        <div class="button-wrapper">
+          <button (click)="unloadToken()" mat-button>Unload</button>
+        </div>
+
+      </ng-container>
+      <ng-template #ShowPrompt>
+
+        <mat-form-field class="full-width">
+          <input [formControl]="tokenFormControl"
+                 autofocus
+                 matInput
+                 placeholder="Paste in a JSONStore.io token">
+          <mat-hint>Copy a token from the <a href="https://www.jsonstore.io/">jsonstore.io</a> website.</mat-hint>
+        </mat-form-field>
+
+        <div class="button-wrapper">
+          <button (click)="usePastedToken()" mat-button>Use the above store token</button>
+        </div>
+
+        <mat-divider [inset]="true"></mat-divider>
+
+        <div class="button-wrapper">
+          <button (click)="generateNewToken()" mat-button>Generate a new store token</button>
+        </div>
+
+        <ng-container *ngIf="cachedToken">
+
+          <mat-divider [inset]="true"></mat-divider>
+
+          <div class="button-wrapper">
+            <button (click)="useCachedToken()" mat-button>Use the cached store token</button>
+          </div>
+
+        </ng-container>
+
+      </ng-template>
     </mat-card-content>
-    <mat-card-actions>
-
-      <button (click)="enterToken()"
-              mat-button>
-        <span>ENTER</span>
-      </button>
-
-      <button (click)="newToken()"
-              mat-button>
-        <span>NEW</span>
-      </button>
-
-      <button *ngIf="hasCachedToken"
-              (click)="useCached()"
-              color="primary"
-              mat-button>
-        <span>USE CACHED</span>
-      </button>
-
-    </mat-card-actions>
   </mat-card>
 </section>
