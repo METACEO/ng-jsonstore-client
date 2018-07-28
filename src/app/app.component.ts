@@ -14,7 +14,7 @@ export class AppComponent {
   public token: string;
 
   constructor(private _httpClient: HttpClient) {
-    this._httpClient.get<{token: string}>(`${environment}/get-token`)
+    this._httpClient.get<{token: string}>(`${environment.api}/get-token`)
       .pipe(
         filter(response => response.token !== undefined),
         map(response => response.token)
